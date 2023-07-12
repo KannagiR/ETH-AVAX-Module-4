@@ -33,5 +33,4 @@
   also set the network metamask to avalanchefuji network manually
 * and transfer testtoken from avalanche mainnet
 
-  ### helping video
-  `https://www.loom.com/share/654ebd302e72422b94a1e8076b1929bd?sid=2486da8a-c994-4db2-a68c-d6469e55f33e`
+ 
