@@ -1,6 +1,6 @@
-# ETH-AVAX-PROOF-Intermediate-EVM-Course-4
+# ETH-AVAX Module 4
 ## DegenToken contract.
-### LICENSCE
+### LICENSE
  it is using the MIT license.
 ### VERSION
  SOLIDITY VERSION ^0.8.9
