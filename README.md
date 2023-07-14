@@ -8,10 +8,10 @@
 ### Contract Details
 The DegenToken.sol file contains the source code for the DEGEN token contract. Here are the key details of the contract:
 
- Token Name: Degen Gaming Token
- Token Symbol: DEGEN
- Decimals: 15
- Total Supply: 100000 (initially)
+ *Token Name: Degen Gaming Token
+ *Token Symbol: DEGEN
+ *Decimals: 15
+ *Total Supply: 100000 (initially)
  The contract includes standard ERC-20 functions such as balanceOf, transfer, redeem.. It also includes additional functionalities for minting and burning 
  tokens.
 
