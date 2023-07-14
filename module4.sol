@@ -1,26 +1,79 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
+contract DegenToken {
+    string public name;
+    string public symbol;
+    uint8 public decimals;
+    uint256 public totalSupply;
 
-contract DegenToken is ERC20, ERC20Burnable, Ownable {
-    constructor() ERC20("DegenToken", "DGN") {
-        _mint(msg.sender, 10000 * 10 ** decimals());
+    mapping(address => uint256) private balances;
+    mapping(address => mapping(address => uint256)) private allowances;
+
+    address public owner;
+
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Mint(address indexed to, uint256 value);
+    event Burn(address indexed from, uint256 value);
+    event Redeem(address indexed from, string itemName);
+    
+    // List of items for redemption
+    string[] public items; 
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only the owner can call this function.");
+        _;
     }
-    function mint(address to, uint256 amount) public onlyOwner {
-        _mint(to, amount);
+
+    constructor() {
+        name = "Degen Gaming Token";
+        symbol = "DEGEN";
+        decimals = 15;
+        totalSupply = 0;
+        owner = msg.sender;
+
+        items.push("Hoodie");
+        items.push("T-shirt");
+        items.push("Bagpack");
+        items.push("Surprise");
     }
-    function transfer(address to, uint256 amount) public virtual override returns (bool) {
-        _transfer(_msgSender(), to, amount);
+    // tranfer tokens
+    function transfer(address recipient, uint256 amount) external returns (bool) {
+        require(amount <= balances[msg.sender], "No available tokens");
+        balances[msg.sender] -= amount;
+        balances[recipient] += amount;
         return true;
     }
-    function redeem(uint256 amount) public {
-        _burn(_msgSender(), amount);
+    // mint tokens
+   function mint(address to, uint256 amount) external onlyOwner {
+        totalSupply += amount;
+        balances[to] += amount;
+        emit Mint(to, amount);
     }
-    function balanceOf(address account) public view override returns (uint256) {
-        return super.balanceOf(account);
+    // burn tokens
+    function burn(uint256 amount) external {
+        require(amount <= balances[msg.sender], "No available tokens");
+        balances[msg.sender] -= amount;
+        totalSupply -= amount;
+        emit Burn(msg.sender, amount);
+    }
+    // redeem tokens
+    function redeem() external returns (string memory) {
+        require(balances[msg.sender] > 0, "Insufficient tokens to redeem");
+        uint256 randomIndex = uint256(keccak256(abi.encodePacked(block.timestamp, msg.sender)));
+        randomIndex %= items.length;
+        string memory chosenItem = items[randomIndex];
+
+        
+        uint256 redemptionAmount = 500; 
+        require(balances[msg.sender] >= redemptionAmount, "Insufficient tokens to redeem selected item");
+        balances[msg.sender] -= redemptionAmount;
+        emit Redeem(msg.sender, items[randomIndex]);
+        return chosenItem;
+    }
+    // fetch balance
+    function balanceOf(address account) external view returns (uint256) {
+        return balances[account];
     }
 }
 
