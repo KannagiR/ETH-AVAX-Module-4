@@ -5,32 +5,45 @@
 ### VERSION
  SOLIDITY VERSION ^0.8.9
 
-### IMPORTS CONTRACTS FROM OPENZEPPELIN LIBRARY 
- These lines import three different Solidity contracts from the OpenZeppelin library. 
- * The first import is for the ERC20 contract, which provides a basic implementation of the ERC20 token standard.
- * The second import is for the ERC20Burnable contract, which extends ERC20 and adds functionality to burn tokens.
- * The third import is for the Ownable contract, which provides a basic access control mechanism.
-### DegenToken
- contract named "DegenToken" and specifies that it inherits from the ERC20, ERC20Burnable, and Ownable contracts. By inheriting these contracts, the DegenToken contract inherits their functions and variables
- 
-### constructor()
- `constructor function that is executed when the contract is deployed. It calls the constructor of the ERC20 contract with the parameters "DegenToken" and "DGN" to set the token name and symbol, respectively. Then, it mints 10,000 tokens to the address of the contract deployer (msg.sender) using the _mint function inherited from ERC20.
- * `mint function`
- function allows the contract owner to mint new tokens. It takes two parameters: the recipient's address (to) and the amount of tokens to be minted (amount). The onlyOwner modifier ensures that only the contract owner can call this function. The function then calls the inherited _mint function to create new tokens and assigns them to the specified address.
- * `transfer function`
- transfer function from the ERC20 contract. It allows token holders to transfer tokens to another address (to). It takes two parameters: the recipient's address (to) and the amount of tokens to be transferred (amount). The function calls the internal _transfer function (inherited from ERC20) to perform the actual token transfer and returns true if the transfer is successful.
- * `redeem function`
- function allows token holders to burn (destroy) their tokens. It takes one parameter: the amount of tokens to be burned (amount). The function calls the internal _burn function (inherited from ERC20Burnable) to burn the specified amount of tokens owned by the caller.
- * `balanceOf function`
- This function allows anyone to retrieve the token balance of a specific address (account). It overrides the balanceOf function inherited from ERC20 and returns the token balance of the specified address by calling the inherited balanceOf function using the super keyword.
- 
- Overall, this code defines a basic ERC20 token contract named "DegenToken" with additional functionalities inherited from ERC20Burnable and Ownable contracts. It includes features such as token minting, burning, and transfers.
+### Contract Details
+The DegenToken.sol file contains the source code for the DEGEN token contract. Here are the key details of the contract:
 
-  ## snowtrace
-  verify your contrace at avalanche fuji testnet on `snowtrace.io` and check the contract transaction
+ Token Name: Degen Gaming Token
+ Token Symbol: DEGEN
+ Decimals: 15
+ Total Supply: 100000 (initially)
+ The contract includes standard ERC-20 functions such as balanceOf, transfer, redeem.. It also includes additional functionalities for minting and burning 
+ tokens.
 
-  ## metamask 
-  also set the network metamask to avalanchefuji network manually
-* and transfer testtoken from avalanche mainnet
+The contract owner has special privileges and is the only address allowed to mint new tokens. Other addresses can interact with the contract by transferring tokens, redeeming tokens for purchases, and burning their own tokens.
+
+### Deployment on Avalanche Fuji Test Network using Remix Injector
+To deploy the DEGEN token contract to the Avalanche Fuji Test Network using Remix Injector, follow these steps:
+
+1.Open the Remix online IDE in your browser.
+2.Create a new file named DegenToken.sol and copy the contents of the DegenToken.sol file from this repository into it.
+3.Select the Solidity compiler version 0.8.0 or a compatible version.
+4.Compile the contract by clicking the "Compile" button.
+5.Switch to the "Deploy & Run Transactions" tab.
+6.In the "Environment" dropdown, select "Injected Web3" to connect Remix to your MetaMask wallet.
+7.Make sure your MetaMask wallet is connected to the Avalanche Fuji Test Network.
+8.Click the "Deploy" button next to the DegenToken contract.
+9.Confirm the deployment transaction in MetaMask.
+10.Wait for the deployment transaction to be confirmed on the Avalanche network.
+11.Once the contract is deployed, you will see the contract address in the Remix console. Make note of this address for future interactions.
+ 
+### Functions
+1. Use the balanceOf function to check the token balance of a specific address.
+2. Use the transfer function to send DEGEN tokens from your address to another address.
+3. Use the burn function to burn a specific amount of your DEGEN tokens.
+4. Use redeem function to buy available items from the list using the available tokens.
+5. Use the mint function (accessible only to the contract owner) to mint new DEGEN tokens.
+ 
+## snowtrace
+Verify your contrace at avalanche fuji testnet on `snowtrace.io` and check the contract transaction
+
+## metamask 
+Also set the network metamask to avalanchefuji network manually
+* and transfer testtoken from avalanche mainnet.
 
  
