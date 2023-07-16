@@ -15,7 +15,6 @@ contract DegenToken {
     event Burn(address indexed from, uint256 value);
     event Redeem(address indexed from, string itemName);
     
-    // List of items for redemption
     string[] public items; 
 
     modifier onlyOwner() {
@@ -25,7 +24,7 @@ contract DegenToken {
 
     constructor() {
         name = "Degen Gaming Token";
-        symbol = "DEGEN";
+        symbol = "DGN";
         decimals = 15;
         totalSupply = 0;
         owner = msg.sender;
@@ -64,7 +63,6 @@ contract DegenToken {
 
         
         uint256 redemptionAmount = 500; 
-        require(balances[msg.sender] >= redemptionAmount, "Insufficient tokens to redeem selected item");
         balances[msg.sender] -= redemptionAmount;
         emit Redeem(msg.sender, items[randomIndex]);
         return chosenItem;
