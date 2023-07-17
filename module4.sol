@@ -48,7 +48,7 @@ contract DegenToken {
     }
     // redeem tokens
     function redeem() external returns (string memory) {
-        require(balances[msg.sender] > 500, "Insufficient tokens to redeem");
+        require(balances[msg.sender] > 300, "Insufficient tokens to redeem");
         uint256 randomIndex = uint256(keccak256(abi.encodePacked(block.timestamp, msg.sender)));
         randomIndex %= items.length;
         string memory chosenItem = items[randomIndex];
