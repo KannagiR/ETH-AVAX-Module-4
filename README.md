@@ -10,7 +10,6 @@ The DegenToken.sol file contains the source code for the DEGEN token contract. H
 
  **Token Name:** Degen Gaming Token
  **Token Symbol:** DEGEN
- **Decimals:** 15
  **Total Supply:** 100000 
  The contract includes standard ERC-20 functions such as balanceOf, transfer, redeem.. It also includes additional functionalities for minting and burning 
  tokens.
@@ -25,12 +24,12 @@ To deploy the DEGEN token contract to the Avalanche Fuji Test Network using Remi
 3.Select the Solidity compiler version 0.8.0 or a compatible version.
 4.Compile the contract by clicking the "Compile" button.
 5.Switch to the "Deploy & Run Transactions" tab.
-6.In the "Environment" dropdown, select "Injected Web3" to connect Remix to your MetaMask wallet.
+6.In the "Environment" , select "Injected Web3" to connect Remix to your MetaMask wallet.
 7.Make sure your MetaMask wallet is connected to the Avalanche Fuji Test Network.
 8.Click the "Deploy" button next to the DegenToken contract.
 9.Confirm the deployment transaction in MetaMask.
 10.Wait for the deployment transaction to be confirmed on the Avalanche network.
-11.Once the contract is deployed, you will see the contract address in the Remix console. Make note of this address for future interactions.
+11.Once the contract is deployed, you will see the contract address in the Remix console.
  
 ### Functions
 1. Use the balanceOf function to check the token balance of a specific address.
@@ -38,7 +37,8 @@ To deploy the DEGEN token contract to the Avalanche Fuji Test Network using Remi
 3. Use the burn function to burn a specific amount of your DEGEN tokens.
 4. Use redeem function to buy available items from the list using the available tokens.
 5. Use the mint function (accessible only to the contract owner) to mint new DEGEN tokens.
- 
+6. Use the get owner function to check if he/she is the owner of the contract.
+
 ## snowtrace
 Verify your contrace at avalanche fuji testnet on `snowtrace.io` and check the contract transaction
 
