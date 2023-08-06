@@ -8,10 +8,10 @@
 ### Contract Details
 The DegenToken.sol file contains the source code for the DEGEN token contract. Here are the key details of the contract:
 
- **Token Name:** Degen Gaming Token
- **Token Symbol:** DEGEN
- **Total Supply:** 100000 
- The contract includes standard ERC-20 functions such as balanceOf, transfer, redeem.. It also includes additional functionalities for minting and burning 
+ **Token Name:** Degen 
+ **Token Symbol:** DGN
+
+ The contract includes standard ERC-20 functions such as transfer, redeem.. It also includes additional functionalities for minting and burning 
  tokens.
 
 The contract owner has special privileges and is the only address allowed to mint new tokens. Other addresses can interact with the contract by transferring tokens, redeeming tokens for purchases, and burning their own tokens.
@@ -32,12 +32,12 @@ To deploy the DEGEN token contract to the Avalanche Fuji Test Network using Remi
 11.Once the contract is deployed, you will see the contract address in the Remix console.
  
 ### Functions
-1. Use the balanceOf function to check the token balance of a specific address.
+1. Use the checkitemavailability function to check if the desired item is available.
 2. Use the transfer function to send DEGEN tokens from your address to another address.
 3. Use the burn function to burn a specific amount of your DEGEN tokens.
 4. Use redeem function to buy available items from the list using the available tokens.
 5. Use the mint function (accessible only to the contract owner) to mint new DEGEN tokens.
-6. Use the get owner function to check if he/she is the owner of the contract.
+
 
 ## snowtrace
 Verify your contrace at avalanche fuji testnet on `snowtrace.io` and check the contract transaction
